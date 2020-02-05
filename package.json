@@ -1,0 +1,66 @@
+{
+  "name": "@fabrix/spool-retry",
+  "version": "1.6.0",
+  "description": "Spool: retry for Fabrix to implement HashiCorp's https://retryproject.io/",
+  "homepage": "https://fabrix.app",
+  "author": {
+    "name": "scott-wyatt",
+    "email": "scottwyatt86@gmail.com",
+    "url": "https://cali-style.com"
+  },
+  "keywords": [
+    "retry",
+    "spool",
+    "fabrix",
+    "trailjs"
+  ],
+  "scripts": {
+    "release": "standard-version",
+    "build": "tsc -p ./lib/tsconfig.release.json",
+    "lint": "tslint -p ./lib",
+    "watch": "tsc -w -p ./lib/tsconfig.release.json",
+    "test": "npm run clean && npm run lint && npm run build && nyc mocha",
+    "prepublishOnly": "npm run compile",
+    "compile": "npm run clean && npm run build",
+    "clean": "rm -rf dist",
+    "ci": "cd .. && ci"
+  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "pre-commit": [
+    "test"
+  ],
+  "dependencies": {
+    "err-code": "^2.0.0",
+    "joi": "^14.3.1",
+    "retry": "^0.12.0"
+  },
+  "devDependencies": {
+    "@fabrix/fabrix": "^1.6.3",
+    "@fabrix/lint": "^1.0.0-alpha.3",
+    "@types/node": "~10.3.4",
+    "mocha": "^6",
+    "nyc": "^14.1.1",
+    "smokesignals": "^3.0.4",
+    "source-map-support": "^0.5.13",
+    "standard-version": "^7.0.0",
+    "supertest": "^3.3.0",
+    "tslib": "~1.9.0",
+    "tslint": "~5.14.0",
+    "tslint-microsoft-contrib": "~6.1.0",
+    "tsutils": "~3.9.1",
+    "typescript": "~3.3.4000"
+  },
+  "peerDependencies": {
+    "@fabrix/fabrix": "^1.5.3"
+  },
+  "engines": {
+    "node": ">= 7.6.0 =< 12.4.0",
+    "npm": ">= 3.10.0"
+  },
+  "repository": "git@github.com:fabrix-app/spool-retry.git",
+  "license": "MIT"
+}
