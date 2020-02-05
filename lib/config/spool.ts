@@ -9,9 +9,9 @@ export const spool = {
    * API and config resources provided by this Spool.
    */
   provides: {
-    resources: ['services'],
+    resources: ['retries'],
     api: {
-      services: ['retryService'],
+      retries: [],
     },
     config: [ 'retry' ]
   },

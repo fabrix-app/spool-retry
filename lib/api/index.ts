@@ -1,5 +1,5 @@
-import * as services from './services'
+import * as retries from './retries'
 
 export {
-  // services
+  retries
 }
