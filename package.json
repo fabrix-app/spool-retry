@@ -1,6 +1,6 @@
 {
   "name": "@fabrix/spool-retry",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Spool: retry for Fabrix to implement HashiCorp's https://retryproject.io/",
   "homepage": "https://fabrix.app",
   "author": {
