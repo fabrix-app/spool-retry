@@ -10,7 +10,12 @@ export class RetryManager extends FabrixGeneric {
 
   constructor(app: FabrixApp) {
     super(app)
-    this.config = this.app.config.get('retry')
+
+    // Add defaults to config if not set
+    this.config = {
+      ...this.config,
+      ...this.app.config.get('retry')
+    }
   }
 
   get name() {
