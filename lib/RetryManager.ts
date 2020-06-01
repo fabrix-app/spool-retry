@@ -1,6 +1,7 @@
 import { FabrixApp } from '@fabrix/fabrix'
 import { FabrixGeneric } from '@fabrix/fabrix/dist/common'
 import { promiseRetry } from './promiseRetry'
+import nano from 'nano-time'
 
 export class RetryManager extends FabrixGeneric {
   public active_retries = new Map()
@@ -35,7 +36,7 @@ export class RetryManager extends FabrixGeneric {
     }
 
     const config = this.config
-    const name = fn.constructor.name + '_' + (Date.now())
+    const name = fn.constructor.name + '_' + (nano())
 
     const { operation, promise } = promiseRetry(config, (retry, number) => {
 
