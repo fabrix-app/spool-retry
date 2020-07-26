@@ -50,17 +50,38 @@ export const retry = {
 For more information about store (type and configuration) please see the retry documentation.
 
 ## Usage
-For the best results, create a Board Class and override the default methods. 
+For the best results, create a Base Class and override or extend the default methods. 
 ```ts
   import { RetryManager } from '@fabrix/spool-retry'
   
-  export class Retry extends RetryManager {
+  export class MyRetry extends RetryManager {
+    myFunc(data, opts) {
+      const func = this.app.services.somePromiseService(data, opts)
+      return this.attempt(func)
+        .catch(err => {
+           this.app.log.error(err)
+           return Promise.reject(err)
+        })
+    }
 
+    cancelByNameAt5 (name, number) {
+      if (number === 5) {
+        this.cancelled_retries.add(name)
+      }
+      return
+    }
+
+    // We are overriding the AfterEachFailure function to have it cancel softly at 5 tries
+    afterEachFailure(name, params, retry, number, err) {
+      this.cancelByNameAt5(name, number)
+      return retry(err)
+    }
   }
 ```
 
+Or simply
 ```ts
- this.app.retries.MyRetry.attemtp(func, params)
+ this.app.retries.MyRetry.attempt(func, params)
 ```
 
 [npm-image]: https://img.shields.io/npm/v/@fabrix/spool-retry.svg?style=flat-square
