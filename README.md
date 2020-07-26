@@ -18,7 +18,7 @@ $ npm install --save @fabrix/spool-retry
 
 ## Configure
 
-```js
+```ts
 // config/main.ts
 import { RetrySpool } from '@fabrix/spool-retry'
 export const main = {
@@ -31,7 +31,7 @@ export const main = {
 
 ## Configuration
 
-```
+```ts
 // config/retry.ts
 export const retry = {
   // retries: The maximum amount of times to retry the operation. Default is 10.
