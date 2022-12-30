@@ -43,7 +43,7 @@
     "@fabrix/fabrix": "^1.6.3",
     "@fabrix/lint": "^1.0.0-alpha.3",
     "@types/node": "~10.3.4",
-    "mocha": "^6",
+    "mocha": "^10",
     "nyc": "^14.1.1",
     "smokesignals": "^3.0.4",
     "source-map-support": "^0.5.13",
